@@ -6,7 +6,6 @@ import (
 	"crypto/md5"
 	"crypto/rand"
 	"encoding/hex"
-	"fmt"
 	"io"
 	"io/ioutil"
 	"os"
@@ -76,20 +75,5 @@ func DecryptFile(filename string, passphrase string) []byte {
 func check(e error) {
 	if e != nil {
 		panic(e)
-	}
-}
-
-func main() {
-	fmt.Println("Starting the application...")
-	dat, err := ioutil.ReadFile("./test.txt")
-	if err != nil {
-		panic(err.Error())
-	}
-	encryptFile("./test-encrypted.txt", []byte(dat), "password1")
-	fmt.Println(string(decryptFile("./test-encrypted.txt", "password1")))
-	dfile := decryptFile("./test-encrypted.txt", "password1")
-	err = ioutil.WriteFile("./test-unencrypted.txt", dfile, 0644)
-	if err != nil {
-		panic(err.Error())
 	}
 }
