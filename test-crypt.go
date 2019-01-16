@@ -13,7 +13,7 @@ var srcfile string
 var destfile string
 var password string
 
-func encrypt() {
+func _encrypt() {
 	fmt.Println("Starting the application...")
 	dat, err := ioutil.ReadFile(srcfile)
 	if err != nil {
@@ -24,7 +24,7 @@ func encrypt() {
 
 }
 
-func decrypt() {
+func _decrypt() {
 
 	dfile := crypt.DecryptFile(srcfile, password)
 	err := ioutil.WriteFile(destfile, dfile, 0644)
@@ -47,12 +47,12 @@ func main() {
 
 	if mode == "encrypt" {
 		fmt.Println("Starting encryption...")
-		encrypt()
+		_encrypt()
 	}
 
 	if mode == "decrypt" {
 		fmt.Println("Starting decryption...")
-		decrypt()
+		_decrypt()
 	}
 
 	fmt.Println("Starting the application...")
